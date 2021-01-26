@@ -14,8 +14,8 @@ from . import theory
 from .tools import dd_format
 from .tools import __data_path__
 from .model import DD
-from .model import SD
 from .model import SI
+from .model import SD
 
 def list(search=None):
     env = lmdb.open(str(__data_path__ / f"darkmatter-data"), readonly=True)
@@ -45,4 +45,4 @@ def list(search=None):
     print(output)
 
 
-__all__ = ["model", "DD", "SD", "SI", "list"]
+__all__ = ["model", "DD", "SI", "SD", "list"]

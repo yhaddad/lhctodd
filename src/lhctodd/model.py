@@ -134,12 +134,12 @@ class SD(sim_model):
     $(m_{med}, m_{\chi})$, with $m_{med}$ is the mass of
     the mediator and $m_\chi$ is the one for the Dark Matter
     >>> import lhctodd as dd
-    >>> model = dd.SD(g_chi=1.0, g_qaurk=0.25)
+    >>> model = dd.Axial(g_chi=1.0, g_qaurk=0.25)
     >>> model.from_csv("some-limit-from-lhc.csv")
     >>> model.plot()
 
     All in one line
-    >>> dm_mass, limit_sigma = dd.SD(g_chi=1.0, g_qaurk=0.25).from_csv("some-limit-from-lhc.csv")
+    >>> dm_mass, limit_sigma = dd.Axial(g_chi=1.0, g_qaurk=0.25).from_csv("some-limit-from-lhc.csv")
     >>> plt.plot(dm_mass, limit_sigma)
     """
     def __init__(self, g_chi=1.0, g_quark=0.25, g_lepton=0.0, label=None):
@@ -156,7 +156,7 @@ class SD(sim_model):
 
 
 class SI(sim_model):
-    """Translate LHC 2D limits on Vector mediator onto limit on DM-Nucleon cross section
+    """Translate LHC 2D limits on Vector or Scalar mediators onto limit on DM-Nucleon cross section
     The values of the couplings should correspond to the model used to extract your limits
 
     Parameters
@@ -172,12 +172,12 @@ class SI(sim_model):
     $(m_{med}, m_{\chi})$, with $m_{med}$ is the mass of
     the mediator and $m_\chi$ is the one for the Dark Matter
     >>> import lhctodd as dd
-    >>> model = dd.SI(g_chi=1.0, g_qaurk=0.25)
+    >>> model = dd.Vector(g_chi=1.0, g_qaurk=0.25)
     >>> model.from_csv("some-limit-from-lhc.csv")
     >>> model.plot()
 
     All in one line
-    >>> dm_mass, limit_sigma = dd.SI(g_chi=1.0, g_qaurk=0.25).from_csv("some-limit-from-lhc.csv")
+    >>> dm_mass, limit_sigma = dd.Vector(g_chi=1.0, g_qaurk=0.25).from_csv("some-limit-from-lhc.csv")
     >>> plt.plot(dm_mass, limit_sigma)
     """
 
