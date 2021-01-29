@@ -40,9 +40,17 @@ to translate LHC limit to DD
 
 ```python
 axial_model = lhctodd.SD(g_chi=1.0, g_g=0.25, g_l=0.0, label="CMS MonoZ")
-axial_model.from_csv("limit-EXO-19-003-SD-90CL.csv")
+axial_dd = axial_model.from_csv("limit-EXO-19-003-SD-90CL.csv")
 axial_model.plot()
+
+# or
+
+import matplotlib.pyplot as plt
+plt.plot(axial_dd[:,0], axial_dd[:,1])
+plt.xlabel("DM mass")
+plt.ylabel("DM-Nucleon cross-section (cm2)")
 ```
+
 *note:  all the limits should be at 90%CL* 
 
 ## installation
