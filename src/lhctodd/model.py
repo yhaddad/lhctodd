@@ -62,7 +62,7 @@ class DD:
             label= self._data.name
         )
 
-        ax.set_xlabel("$m_{\chi}$")
+        ax.set_xlabel("$m_{\chi}$ (GeV)")
         ax.set_ylabel(
             "{model} DM-nucleon cross-section (cm$^2$)".format(
                 model=self._data.type
@@ -70,6 +70,33 @@ class DD:
         )
         ax.set_xscale("log")
         ax.set_yscale("log")
+
+
+def plot_all(limit_type="SI", ax=None):
+    _env = lmdb.open(str( __data_path__ / f"darkmatter-data"), readonly=True)
+    with _env.begin() as txn:
+        for key, _ in txn.cursor():
+            raw = txn.get(key)
+            data = pickle.loads(raw)
+            if limit_type in data.type:
+                limit = data.get_limit()
+                if ax is None:
+                    ax = plt.gca()
+                ax.plot(
+                    limit[:,0],
+                    limit[:,1],
+                    label = data.name
+                )
+                ax.set_xlabel("$m_{\chi}$ (GeV)")
+                ax.set_ylabel(
+                    "{model} DM-nucleon cross-section (cm$^2$)".format(
+                        model=data.type
+                    )
+                )
+                ax.set_xscale("log")
+                ax.set_yscale("log")
+    _env.close()
+
 
 
 class sim_model:

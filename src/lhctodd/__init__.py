@@ -16,6 +16,8 @@ from .tools import __data_path__
 from .model import DD
 from .model import SI
 from .model import SD
+from .model import plot_all
+
 
 def list(search=None):
     env = lmdb.open(str(__data_path__ / f"darkmatter-data"), readonly=True)
