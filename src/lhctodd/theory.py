@@ -78,7 +78,7 @@ class width:
         z = np.divide(chi_mass, med_mass)**2
         z = z.astype(np.complex128)
         return np.where(
-            med_mass >= 2 * mass, 
+            med_mass >= 2 * chi_mass, 
             g**2 * med_mass * np.sqrt(1 - 4*z) * (1 + 2*z) / (12*np.pi),
             0.0
         )
@@ -133,7 +133,7 @@ class width:
         z = np.divide(chi_mass, med_mass)**2
         z = z.astype(np.complex128)
         return np.where(
-            med_mass >= 2 * mass, 
+            med_mass >= 2 * chi_mass, 
             g**2 * med_mass * np.sqrt(1 - 4*z)**3 / (12*np.pi),
             0.0
         )
