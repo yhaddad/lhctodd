@@ -17,10 +17,11 @@ def test_thoery():
     print("gamma_vector_ll = ", m.theory.width.vector_ll(100))
     print("gamma_vector_nn = ", m.theory.width.vector_nn(100))
     print("gamma_vector_dm = ", m.theory.width.vector_dm(100))
-    print("gamma_axial_qq = ", m.theory.width.axial_qq(100))
-    print("gamma_axial_ll = ", m.theory.width.axial_ll(100))
-    print("gamma_axial_nn = ", m.theory.width.axial_nn(100))
-    print("gamma_axial_dm = ", m.theory.width.axial_dm(100))
+    print("gamma_axial_qq  = ", m.theory.width.axial_qq(100))
+    print("gamma_axial_ll  = ", m.theory.width.axial_ll(100))
+    print("gamma_axial_nn  = ", m.theory.width.axial_nn(100))
+    print("gamma_axial_dm  = ", m.theory.width.axial_dm(100))
+    print("gamma_scalar_gg = ", m.theory.width.scalar_gg(100))
 
 
 
