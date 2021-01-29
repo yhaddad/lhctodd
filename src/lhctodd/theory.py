@@ -44,7 +44,7 @@ class width:
                 g**2 * med_mass * np.sqrt(1 - 4*z) * (1 + 2*z) / (4*np.pi),
                 0.0 
             )
-        return width
+        return np.abs(width)
 
     @classmethod
     def vector_ll(cls, med_mass, g=1.0):
@@ -59,17 +59,13 @@ class width:
                 g**2 * med_mass * np.sqrt(1 - 4*z) * (1 + 2*z) / (12*np.pi),
                 0.0 
             )
-        return width
+        return np.abs(width)
 
     @classmethod
     def vector_nn(cls, med_mass, g=1.0):
         """Width of vector mediator decaying to neutrinos
         """
-        return 3 * np.where(
-            med_mass >= 2 * mass, 
-            g**2 * med_mass / (24*np.pi),
-            0.0
-        )
+        return g**2 * med_mass / (24*np.pi)
 
     @classmethod
     def vector_dm(cls, med_mass, chi_mass=1.0, g=1.0):
@@ -77,11 +73,11 @@ class width:
         """
         z = np.divide(chi_mass, med_mass)**2
         z = z.astype(np.complex128)
-        return np.where(
+        return np.abs(np.where(
             med_mass >= 2 * chi_mass, 
             g**2 * med_mass * np.sqrt(1 - 4*z) * (1 + 2*z) / (12*np.pi),
             0.0
-        )
+        ))
 
     @classmethod
     def vector_total_width(cls, med_mass, chi_mass, g_q=0.25, g_chi=1.0, g_l=0.0):
@@ -105,7 +101,7 @@ class width:
                 g**2 * med_mass * np.sqrt(1 - 4*z)**3 / (4*np.pi),
                 0.0 
             )
-        return width
+        return np.abs(width)
 
     @classmethod
     def axial_ll(cls, med_mass, g = 1.0):
@@ -118,25 +114,21 @@ class width:
                 g**2 * med_mass * np.sqrt(1 - 4*z)**3 / (12*np.pi),
                 0.0 
             )
-        return width
+        return np.abs(width)
 
     @classmethod
     def axial_nn(cls, med_mass, g = 1.0):
-        return 3 * np.where(
-            med_mass >= 2 * mass, 
-            g**2 * med_mass / (24*np.pi),
-            0.0
-        )
+        return g**2 * med_mass / (24*np.pi)
 
     @classmethod
     def axial_dm(cls, med_mass, chi_mass=1.0, g = 1.0):
         z = np.divide(chi_mass, med_mass)**2
         z = z.astype(np.complex128)
-        return np.where(
+        return np.abs(np.where(
             med_mass >= 2 * chi_mass, 
             g**2 * med_mass * np.sqrt(1 - 4*z)**3 / (12*np.pi),
             0.0
-        )
+        ))
 
     @classmethod
     def axial_total_width(cls, med_mass, chi_mass, g_q=0.25, g_dm=1.0, g_l=0.0):
@@ -154,7 +146,7 @@ class width:
         )
     def from_factor_ps(tau):
         tau = tau.astype(np.complex128)
-        return tau * np.arctan(np.devide(1, np.sqrt(tau - 1)))**2
+        return np.abs(tau * np.arctan(np.devide(1, np.sqrt(tau - 1)))**2)
 
     @classmethod
     def scalar_qq(cls, med_mass, g=1.0):
@@ -167,17 +159,17 @@ class width:
                 3 * g**2 * cls._fyc(mass)**2 * med_mass * np.sqrt(1 - 4*z)**3 / (16*np.pi),
                 0.0
             )
-        return width
+        return np.abs(width)
     
     @classmethod
     def scalar_gg(cls, med_mass, chi_mass=1.0, g=1.0):
         z = np.divide(cls._q_mass[5], med_mass)**2
         z = z.astype(np.complex128)
-        return g**2 * med_mass * cls._as(2*chi_mass)**2 * p.where(
+        return np.abs(g**2 * med_mass * cls._as(2*chi_mass)**2 * p.where(
             med_mass >= 2 * mass, 
             cls.form_factor_s(4*z)**2 / (32*np.pi**3 * self._vev**2),
             0.0
-        )
+        ))
 
     @classmethod
     def scalar_chi(cls, med_mass, chi_mass=1.0, g=1.0):
