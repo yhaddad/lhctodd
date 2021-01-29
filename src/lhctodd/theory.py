@@ -162,11 +162,11 @@ class width:
         return np.abs(width)
     
     @classmethod
-    def scalar_gg(cls, med_mass, chi_mass=1.0, g=1.0):
+    def scalar_gg(cls, med_mass, g=1.0):
         z = np.divide(cls._q_mass[5], med_mass)**2
         z = z.astype(np.complex128)
-        return np.abs(g**2 * med_mass * cls._as(2*chi_mass)**2 * np.where(
-            med_mass >= 2 * chi_mass, 
+        return np.abs(g**2 * med_mass * cls._as(2*med_mass)**2 * np.where(
+            med_mass >= 2 * cls._q_mass[5], 
             cls.form_factor_s(4*z)**2 / (32*np.pi**3 * cls._vev**2),
             0.0
         ))
