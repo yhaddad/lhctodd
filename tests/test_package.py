@@ -22,6 +22,8 @@ def test_thoery():
     print("gamma_axial_nn  = ", m.theory.width.axial_nn(100))
     print("gamma_axial_dm  = ", m.theory.width.axial_dm(100))
     print("gamma_scalar_gg = ", m.theory.width.scalar_gg(100))
+    print("gamma_scalar_qq = ", m.theory.width.scalar_qq(100))
+    print("gamma_scalar_dm = ", m.theory.width.scalar_dm(100))
 
 
 
