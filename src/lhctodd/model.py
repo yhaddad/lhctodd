@@ -112,10 +112,25 @@ class sim_model:
         self.label = label
 
     def from_csv(self, filename, delimiter=","):
+        """
+        filename: txt/csv file with mediator and dark matter mass the first and second column
+        """
         print("filename : ", filename, delimiter)
         my_data = np.genfromtxt(filename, delimiter=delimiter)
         self.med_mass = my_data[:,0] # mediator
         self.chi_mass = my_data[:,1] # darkmatter
+        return np.vstack([
+            self.sigma(self.med_mass, self.chi_mass),
+            self.chi_mass
+        ]).T
+    
+    def from_array(self, med_mass, chi_mass, delimiter=","):
+        """
+        med_mass: array-like mediator mass
+        chi_mass: array-like dark matter candidate mass
+        """
+        self.med_mass = med_mass # mediator
+        self.chi_mass = chi_mass # darkmatter
         return np.vstack([
             self.sigma(self.med_mass, self.chi_mass),
             self.chi_mass
