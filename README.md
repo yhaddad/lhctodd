@@ -3,6 +3,9 @@
 [![Documentation Status][rtd-badge]][rtd-link]
 [![PyPI version][pypi-version]][pypi-link]
 [![PyPI platforms][pypi-platforms]][pypi-link]
+[![DOI](https://zenodo.org/badge/333065942.svg)](https://zenodo.org/badge/latestdoi/333065942)
+
+
 
 [pypi-link]:                https://pypi.org/project/lhctodd/
 [pypi-platforms]:           https://img.shields.io/pypi/pyversions/lhctodd
